@@ -33,18 +33,18 @@ public class BirdyHunt extends Application {
 	final static int WIDTH = 464;
 	final static int HEIGHT = 600;
 	
-	final static Image IMG_BACKGROUND = new Image(BirdyHunt.class.getResource("bg_4.jpg").toString());
-	final static Image IMG_BG_1 = new Image(BirdyHunt.class.getResource("bg_4_1.png").toString());
-	final static Image IMG_BG_2 = new Image(BirdyHunt.class.getResource("bg_4_2.png").toString());
-	final static Image IMG_BG_3 = new Image(BirdyHunt.class.getResource("bg_4_3.png").toString());
+	final static Image IMG_BACKGROUND = new Image(BirdyHunt.class.getResource("/res/bg_4.jpg").toString());
+	final static Image IMG_BG_1 = new Image(BirdyHunt.class.getResource("/res/bg_4_1.png").toString());
+	final static Image IMG_BG_2 = new Image(BirdyHunt.class.getResource("/res/bg_4_2.png").toString());
+	final static Image IMG_BG_3 = new Image(BirdyHunt.class.getResource("/res/bg_4_3.png").toString());
 	
-	final static Image IMG_BIRD_1 = new Image(BirdyHunt.class.getResource("bird_1.png").toString());
-	final static Image IMG_BIRD_2 = new Image(BirdyHunt.class.getResource("bird_2.png").toString());
-	final static Image IMG_BIRD_3 = new Image(BirdyHunt.class.getResource("bird_3.png").toString());
+	final static Image IMG_BIRD_1 = new Image(BirdyHunt.class.getResource("/res/bird_1.png").toString());
+	final static Image IMG_BIRD_2 = new Image(BirdyHunt.class.getResource("/res/bird_2.png").toString());
+	final static Image IMG_BIRD_3 = new Image(BirdyHunt.class.getResource("/res/bird_3.png").toString());
 	
-	final static Image IMG_EXPLOSION_1 = new Image(BirdyHunt.class.getResource("explode_1.png").toString());
-	final static Image IMG_EXPLOSION_2 = new Image(BirdyHunt.class.getResource("explode_2.png").toString());
-	final static Image IMG_EXPLOSION_3 = new Image(BirdyHunt.class.getResource("explode_3.png").toString());
+	final static Image IMG_EXPLOSION_1 = new Image(BirdyHunt.class.getResource("/res/explode_1.png").toString());
+	final static Image IMG_EXPLOSION_2 = new Image(BirdyHunt.class.getResource("/res/explode_2.png").toString());
+	final static Image IMG_EXPLOSION_3 = new Image(BirdyHunt.class.getResource("/res/explode_3.png").toString());
 	
 	ImageView background = new ImageView(IMG_BACKGROUND);
 	ImageView bg_1 = new ImageView(IMG_BG_1);
@@ -58,7 +58,7 @@ public class BirdyHunt extends Application {
 	ImageView explosion1 = new ImageView(IMG_EXPLOSION_1);
 	ImageView explosion2 = new ImageView(IMG_EXPLOSION_2);
 	ImageView explosion3 = new ImageView(IMG_EXPLOSION_3);
-	
+
 	private Animation current, hitAnimation;
 	private Group bird, waves, explosion;
 	private IntegerProperty hitCounter = new SimpleIntegerProperty(this, "hitCounter");
