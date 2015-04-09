@@ -2,8 +2,6 @@ package com.gmail.jacklin213.birdyHunt;
 	
 import java.util.Random;
 
-import com.gmail.jacklin213.wordcounter.ConfirmBox;
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.RotateTransition;
@@ -20,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
@@ -114,7 +113,8 @@ public class BirdyHunt extends Application {
 		hud.setTranslateY(20);
 		
 		explosion = new Group(explosion1);
-		Group layout = new Group(waves, bird, hud);
+		Group layout = new Group(new VBox(getMenuBar(window), waves), bird, hud);
+		//VBox layout = new VBox(getMenuBar(), content);
 		Scene scene = new Scene(layout, WIDTH, HEIGHT);
 		scene.setOnMouseClicked(event -> shotCounter.set(shotCounter.get() + 1));
 		
@@ -125,6 +125,10 @@ public class BirdyHunt extends Application {
 			hitCounter.set(hitCounter.get() + 1);
 		});
 		
+		window.setOnCloseRequest(event -> {
+			event.consume();
+			onDisable();
+		});
 		window.setTitle("FirstGame");
 		window.setScene(scene);
 		window.show();
@@ -168,5 +172,31 @@ public class BirdyHunt extends Application {
 		current = transition;
 		current.play();
 	}
+
+	private MenuBar getMenuBar(Stage window) {
+		MenuBar menuBar = new MenuBar();
+		//menuBar.prefWidthProperty().bind(window.widthProperty());
+		
+		Menu menuFile = new Menu("File");
+		MenuItem itemNew = new MenuItem("New Game");
+		itemNew.setAccelerator(KeyCombination.keyCombination("F2"));
+		//itemNew.setOnAction(event -> newGame());
+		MenuItem itemExit = new MenuItem("Exit");
+		itemExit.setAccelerator(KeyCombination.keyCombination("Ctrl+W"));
+		itemExit.setOnAction(event -> onDisable());
+		menuFile.getItems().addAll(itemNew, new SeparatorMenuItem(), itemExit);
+		
+		menuBar.getMenus().add(menuFile);
+		
+		return menuBar;
+	}
 	
+	public void onDisable() {
+		ConfirmBox confirmBox = new ConfirmBox("Exit", "Are you sure you want to exit?");
+		if (confirmBox.getConfirm()) {
+			//Do stuff
+//			window.close();
+			Platform.exit();
+		}
+	}
 }
